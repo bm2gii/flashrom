@@ -381,6 +381,7 @@ static int ft2232_spi_init(const struct programmer_cfg *cfg)
 			channel_count = 2;
 			cs_bits = 0x18;
 			pindir = 0x1b;
+			divisor = 8;
 		} else if (!strcasecmp(arg, "openmoko")) {
 			ft2232_vid = FIC_VID;
 			ft2232_type = OPENMOKO_DBGBOARD_PID;
