@@ -1,0 +1,1 @@
+openocd -f board/dp_busblaster_v3.cfg -c "adapter_khz 1000; init; svf bbv3-jtagkey.svf; shutdown"
