@@ -438,6 +438,18 @@ static int ft2232_spi_init(const struct programmer_cfg *cfg)
 			/* Set GPIOH5 output low - enable TDI output buffer */
 			/* Set GPIOH6 output low - enable TCK output buffer */
 			pindir_high = 0x70;
+		} else if (!strcasecmp(arg, "kt-link-bb")) {
+			ft2232_type = FTDI_FT2232H_PID;
+			/* port B is used as uart */
+			channel_count = 1;
+			/* Set GPIOL1 output high - route TMS and TDO through multiplexers */
+			aux_bits = 0x20;
+			pindir = 0x2b;
+			/* Set GPIOH4 output low - enable TMS output buffer */
+			/* Set GPIOH5 output low - enable TDI output buffer */
+			/* Set GPIOH6 output low - enable TCK output buffer */
+			pindir_high = 0x70;
+			divisor = 8;
 		} else {
 			msg_perr("Error: Invalid device type specified.\n");
 			free(arg);
